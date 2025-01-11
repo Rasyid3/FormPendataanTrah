@@ -1,0 +1,74 @@
+body {
+    background-color: #e9f7e9; /* Light green background */
+    color: #2f6a34; /* Dark green text */
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    color: #3a8d3a; /* Green color for the title */
+    font-size: 2.5rem;
+}
+
+.form-label {
+    color: #3a8d3a; /* Green color for labels */
+}
+
+.form-control, .form-select {
+    border: 1px solid #a8d5ba; /* Soft green borders for inputs */
+    border-radius: 5px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #4caf50; /* Green color for focused inputs */
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25); /* Focus effect */
+}
+
+.btn-primary {
+    background-color: #4caf50; /* Green button color */
+    border-color: #4caf50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.btn-success {
+    background-color: #80e27e; /* Light green success button */
+    border-color: #80e27e;
+}
+
+.btn-success:hover {
+    background-color: #66c466; /* Darker green on hover */
+}
+
+.family-member {
+    border: 2px solid #a8d5ba; /* Soft green border for each family member section */
+    border-radius: 8px;
+    background-color: #f3f9f3; /* Light green background for sections */
+}
+
+.remove-member {
+    background-color: #e57373; /* Red color for delete button */
+    border-color: #e57373;
+}
+
+.remove-member:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.container {
+    padding-top: 30px;
+}
+
+.form-text {
+    color: #5f6368;
+}
+
+/* Styling for headings */
+h4 {
+    color: #388e3c; /* Dark green for section headers */
+}
+
+.family-member h4 {
+    font-size: 1.5rem;
+}

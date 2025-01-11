@@ -1,0 +1,10 @@
+SELECT
+c.name as nama,
+p.asal as asal_empu,
+c.status,
+c.tanggal_lahir,
+c.keterangan,
+c.alamat
+FROM people c
+INNER JOIN grandparents p
+ON c.grandparent_id = p.id;
