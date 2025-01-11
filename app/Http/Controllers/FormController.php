@@ -34,7 +34,7 @@ class FormController extends Controller
         ]);
 
         // Send data to the API
-        $response = Http::post('127.0.0.1:8001/api/orang', $validated);
+        $response = Http::post('/api/orang', $validated);
 
         if ($response->successful()) {
             return redirect()->route('form.create')->with('success', 'Person added successfully!');
