@@ -85,56 +85,57 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        let memberIndex = 3;
+    let memberIndex = 2; // Starting index for new members
 
-        // Add new family member row
-        document.getElementById('add-member').addEventListener('click', () => {
-            const familyMembersContainer = document.getElementById('family-members');
-            const newMemberTemplate = `
-                <div class="family-member border p-3 mb-3" data-index="${memberIndex}">
-                    <h4>Anak</h4>
-                    <div class="mb-3">
-                        <label for="family_data[${memberIndex}][nama]" class="form-label">Nama:</label>
-                        <input type="text" class="form-control" name="family_data[${memberIndex}][nama]" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="hidden" class="form-control" name="family_data[${memberIndex}][status]" value="anak">
-                    </div>
-                    <div class="mb-3">
-                        <label for="family_data[${memberIndex}][tanggal_lahir]" class="form-label">Tanggal Lahir:</label>
-                        <input type="date" class="form-control" name="family_data[${memberIndex}][tanggal_lahir]" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="hidden" class="form-control" name="family_data[${memberIndex}][alamat]" value="-">
-                    </div>
-                    <div class="mb-3">
-                        <input type="hidden" class="form-control" name="family_data[${memberIndex}][keterangan] value="-">
-                    </div>
-                    <button type="button" class="btn btn-danger remove-member">Hapus Anak</button>
+    // Add new family member row
+    document.getElementById('add-member').addEventListener('click', () => {
+        const familyMembersContainer = document.getElementById('family-members');
+        const newMemberTemplate = `
+            <div class="family-member border p-3 mb-3" data-index="${memberIndex}">
+                <h4>Anak</h4>
+                <div class="mb-3">
+                    <label for="family_data[${memberIndex}][nama]" class="form-label">Nama:</label>
+                    <input type="text" class="form-control" name="family_data[${memberIndex}][nama]" required>
                 </div>
-            `;
-            familyMembersContainer.insertAdjacentHTML('beforeend', newMemberTemplate);
-            memberIndex++;
-        });
+                <div class="mb-3">
+                    <input type="hidden" class="form-control" name="family_data[${memberIndex}][status]" value="anak">
+                </div>
+                <div class="mb-3">
+                    <label for="family_data[${memberIndex}][tanggal_lahir]" class="form-label">Tanggal Lahir:</label>
+                    <input type="date" class="form-control" name="family_data[${memberIndex}][tanggal_lahir]" required>
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" class="form-control" name="family_data[${memberIndex}][alamat]" value="-">
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" class="form-control" name="family_data[${memberIndex}][keterangan]" value="-">
+                </div>
+                <button type="button" class="btn btn-danger remove-member">Hapus Anak</button>
+            </div>
+        `;
+        familyMembersContainer.insertAdjacentHTML('beforeend', newMemberTemplate);
+        memberIndex++;
+    });
 
-        // Remove family member row
-        document.getElementById('familyForm').addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-member')) {
-                e.target.closest('.family-member').remove();
-            }
-        });
+    // Remove family member row
+    document.getElementById('familyForm').addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-member')) {
+            e.target.closest('.family-member').remove();
+        }
+    });
 
-        // Fill keterangan with random numbers before submit
-        document.getElementById('familyForm').addEventListener('submit', (e) => {
-        // Generate a single random number
-        const randomId = Math.floor(Math.random() * 9999) + 1; // Random number between 1-9999
+    // Assign family ID to all keterangan fields on submit
+    document.getElementById('familyForm').addEventListener('submit', (e) => {
+        // Generate a single random family ID
+        const familyId = Math.floor(Math.random() * 9999) + 1; // Random number between 1-9999
 
-        // Find all keterangan fields and set the same random number
+        // Assign the same family ID to all keterangan fields
         const keteranganFields = document.querySelectorAll('[name^="family_data"][name$="[keterangan]"]');
         keteranganFields.forEach((field) => {
-            field.value = randomId;
+            field.value = familyId;
         });
     });
-    });
+});
+
 </script>
 @endsection

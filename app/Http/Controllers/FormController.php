@@ -10,7 +10,7 @@ class FormController extends Controller
     public function create()
     {
         // Fetch grandparents from the API
-        $response = Http::get('/api/grandparents');
+        $response = Http::get(env('APP_URL') . '/api/grandparents');
 
         if ($response->successful()) {
             $grandparents = $response->json(); // Assuming API returns JSON data
@@ -34,7 +34,7 @@ class FormController extends Controller
         ]);
 
         // Send data to the API
-        $response = Http::post('/api/orang', $validated);
+        $response = Http::post('127.0.0.1:8001/api/orang', $validated);
 
         if ($response->successful()) {
             return redirect()->route('form.create')->with('success', 'Person added successfully!');
