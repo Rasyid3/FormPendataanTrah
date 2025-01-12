@@ -8,11 +8,11 @@
 @section('content')
 <div class="container">
     <h1>Form Pendataan Anggota Trah Martorejan</h1>
-        <p>Form ini dibuat bertujuan untuk mendata anggota trah martorejan dan mendokumentasikannya dalam bentuk buku keluarga</p>
+        <p>Form ini dibuat bertujuan untuk mendata anggota Trah Martorejan dan mendokumentasikannya dalam bentuk buku keluarga</p>
     <form id="familyForm" method="POST" action="{{ route('orang.store') }}">
         @csrf
         <div class="mb-3">
-            <label for="grandparent_id" class="form-label">Empu</label>
+            <label for="grandparent_id" class="form-label">Nama Empu</label>
             <select id="grandparent_id" name="grandparent_id" class="form-control" required>
                 <option value="">Pilih empu</option>
                 @foreach ($grandparents as $grandparent)

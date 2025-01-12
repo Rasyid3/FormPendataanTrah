@@ -10,7 +10,7 @@ class FormController extends Controller
     public function create()
     {
         // Fetch grandparents from the API
-        $response = Http::get(env('APP_URL') . '/api/grandparents');
+        $response = Http::get('127.0.0.1:8001/api/grandparents');
 
         if ($response->successful()) {
             $grandparents = $response->json(); // Assuming API returns JSON data
