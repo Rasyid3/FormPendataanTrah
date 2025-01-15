@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="{{ asset('/image/ima.ico') }}" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tempat Acara</title>
@@ -11,14 +12,14 @@
     <header class="venue-header">
         <h1>🌿 Lokasi Acara 🌿</h1>
         <h2>Syawalan Trah Martorejan</h2>
-        <h3>2 Syawal 1446H / 1 April 2025</h3>
+        <h3>2 Syawal 1446H (Pemerintah)</h3>
     </header>
     <div class="venue-info">
       <h2>📍 Tempat Acara</h2>
       <ul>
         <li><strong>Nama Tempat :</strong> Srawung Resto & Kopi</li>
         <li><strong>Alamat :</strong> 6FR8+8HC, Jl. Cangkringan, Tegal Sari, Purwomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55571</li>
-        <li><strong>Tanggal :</strong> 1 April 2025</li>
+        <li><strong>Tanggal :</strong> 2 Syawal 1446H (Pemerintah)</li>
         <li><strong>Jam :</strong> 09:00 WIB - 13.00 WIB</li>
       </ul>
     </div>

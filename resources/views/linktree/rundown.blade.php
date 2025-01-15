@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="{{ asset('/image/ima.ico') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Rundown</title>
+    <title>Rundown Acara Syawalan</title>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <style>
         .schedule-container {
@@ -65,7 +66,7 @@
             <h2>Rundown Acara Syawalan</h2>
             <div class="schedule-item">
                 <span>09:00 </span>
-                <span>Registrasi dan Foto Keluarga</span>
+                <span>Registrasi, Foto Keluarga</span>
             </div>
             <div class="schedule-item">
                 <span>10:00</span>
@@ -85,11 +86,11 @@
             </div>
             <div class="schedule-item">
                 <span>11:30</span>
-                <span>Sungkeman dan Halal bihalal</span>
+                <span>Sungkeman, Halal bihalal</span>
             </div>
             <div class="schedule-item">
                 <span>12:00</span>
-                <span>Foto, Makan siang, Penutupan</span>
+                <span>Makan siang, Penutupan</span>
             </div>
         </div>
         <a href="{{ route('linktree') }}" class="back-button">Kembali</a>

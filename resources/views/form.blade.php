@@ -9,6 +9,7 @@
 <div class="container">
     <h1>Form Pendataan Anggota Trah Martorejan</h1>
         <p>Form ini dibuat bertujuan untuk mendata anggota Trah Martorejan dan mendokumentasikannya dalam bentuk buku keluarga</p>
+        <p>Form diisi satu kali per Kartu keluarga</p>
     <form id="familyForm" method="POST" action="{{ route('orang.store') }}">
         @csrf
         <div class="mb-3">
@@ -16,7 +17,7 @@
             <select id="grandparent_id" name="grandparent_id" class="form-control" required>
                 <option value="">Pilih empu</option>
                 @foreach ($grandparents as $grandparent)
-                    <option value="{{ $grandparent['id'] }}">{{ $grandparent['name'] }}</option>
+                <option value="{{ $grandparent['id'] }}">{{ $grandparent['name'] }} ({{ $grandparent['asal'] }})</option>
                 @endforeach
             </select>
             <div class="form-text">Pilih dari keluarga empu mana</div>
@@ -40,7 +41,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="family_data[0][tanggal_lahir]" class="form-label">Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="family_data[0][tanggal_lahir]" required>
+                    <input
+                    type="text"
+                    class="form-control date-picker"
+                    name="family_data[0][tanggal_lahir]"
+                    placeholder="YYYY-MM-DD"
+                    required >
                 </div>
                 <div class="mb-3">
                     <label for="family_data[0][alamat]" class="form-label">Alamat Rumah:</label>
@@ -67,7 +73,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="family_data[1][tanggal_lahir]" class="form-label">Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="family_data[1][tanggal_lahir]" required>
+                    <input
+                    type="text"
+                    class="form-control date-picker"
+                    name="family_data[1][tanggal_lahir]"
+                    placeholder="YYYY-MM-DD"
+                    required >
                 </div>
                 <div class="mb-3">
                     <input type="hidden" class="form-control" name="family_data[1][alamat]" value="-">
@@ -83,8 +94,22 @@
     </form>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
+        function initializeDatePickers() {
+        // Reinitialize Flatpickr for all date-picker elements
+        flatpickr('.date-picker', {
+            dateFormat: 'Y-m-d', // Format matches the database
+            allowInput: true // Allow manual entry for fallback
+        });
+    }
+
+    initializeDatePickers();
+
     let memberIndex = 2; // Starting index for new members
 
     // Add new family member row
@@ -98,11 +123,21 @@
                     <input type="text" class="form-control" name="family_data[${memberIndex}][nama]" required>
                 </div>
                 <div class="mb-3">
-                    <input type="hidden" class="form-control" name="family_data[${memberIndex}][status]" value="anak">
+                    <label for="family_data[${memberIndex}][status]" class="form-label">Jenis Kelamin:</label>
+                    <select class="form-control" name="family_data[${memberIndex}][status]" required>
+                        <option value="">Pilih jenis kelamin anak</option>
+                        <option value="Anak Laki-Laki">Anak Laki-Laki</option>
+                        <option value="Anak Perempuan">Anak Perempuan</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="family_data[${memberIndex}][tanggal_lahir]" class="form-label">Tanggal Lahir:</label>
-                    <input type="date" class="form-control" name="family_data[${memberIndex}][tanggal_lahir]" required>
+                    <input
+                    type="text"
+                    class="form-control date-picker"
+                    name="family_data[${memberIndex}][tanggal_lahir]"
+                    placeholder="YYYY-MM-DD"
+                    required >
                 </div>
                 <div class="mb-3">
                     <input type="hidden" class="form-control" name="family_data[${memberIndex}][alamat]" value="-">
@@ -115,6 +150,8 @@
         `;
         familyMembersContainer.insertAdjacentHTML('beforeend', newMemberTemplate);
         memberIndex++;
+
+        initializeDatePickers();
     });
 
     // Remove family member row

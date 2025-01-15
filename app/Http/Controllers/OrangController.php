@@ -32,14 +32,19 @@ class OrangController extends Controller
     ]);
 
     $grandparentId = $validated['grandparent_id'];
-    $familyData = array_map(function ($item) use ($grandparentId) {
+    $currentTimestamp = now()->setTimezone('Asia/Jakarta');
+
+    $familyData = array_map(function ($item) use ($grandparentId, $currentTimestamp) {
         $item['grandparent_id'] = $grandparentId; // Add grandparent_id to each row
+        $item['created_at'] = $currentTimestamp; // Add created_at timestamp to each row
+        $item['updated_at'] = $currentTimestamp; // Add updated_at timestamp to each row
         return $item;
     }, $validated['family_data']);
 
     // Insert all family rows in one operation
     Orang::insert($familyData);
-    return view ('form.thankyou');
+
+    return redirect()->route('thankyou');
     return response()->json(['message' => 'Family data added successfully'], 201);
 
 }
@@ -78,5 +83,11 @@ class OrangController extends Controller
     {
         $orang->delete();
         return response()->json(['message' => 'deleted'], 200);
+    }
+
+    public function viewPage()
+    {
+        $data = Orang::all();
+        return view('orang.index',['orangs' => $data]);
     }
 }
